@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form id="myForm" name="myForm" method="get" action="<%= apiUrl %>">
+        <div class="form-group">
+            <label for="">id:</label>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="id" id="id" name="id">
+              </div>
+            </div>
+            <div class="text-center" style="padding-top: 20px;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+      </form>
+  </body>
+  
+</html>

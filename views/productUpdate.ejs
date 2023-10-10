@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>Update Product By id</h1>
+    <form id="myForm" name="myForm">
+        <div class="form-group">
+          <label for="">id:</label>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="id" id="id" name="id">
+              </div>
+            </div>
+            <div class="row">
+              <h1>New Product</h1>
+            </div>
+            <label for="">Name</label>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="name" id="name" name="name">
+              </div>
+            </div>
+            <label for="">Description</label>
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="description" id="description" name="description">
+                </div>
+            </div>
+            <label for="">Price</label>
+              <div class="row">
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="price" id="price" name="price" step="0.01">
+                </div>
+            </div>
+            <label for="">Quantity</label>
+              <div class="row">
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="quantity" id="quantity" name="quantity">
+                </div>
+            </div>
+            <label for="">Category</label>
+              <!-- <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="category" id="category" name="category">
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col">
+                    <select class="custom-select" id="category" name="category">
+                        <option selected>Choose...</option>
+                        <option value="Men">Men</option>
+                        <option value="Women">Women</option>
+                        <option value="teens">teens</option>
+                      </select>
+                </div>
+            </div>
+            <div class="text-center" style="padding-top: 20px;">
+                <button type="button" onclick="updateProduct()" class="btn btn-primary">Submit</button>
+            </div>
+      </form>
+      
+  <script>
+    function updateProduct() {
+      // var formData = JSON.stringify($("#myForm").serializeArray());
+      const formElement = document.getElementById("myForm");
+      var formData = new FormData(formElement);
+
+      fetch(`/api/products/:id`, {
+        method: "PUT",
+        headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(Object.fromEntries(formData)),
+      });
+    }
+  </script>
+
+  </body>
+
+</html>
